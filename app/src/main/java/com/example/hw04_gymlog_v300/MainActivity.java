@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
-        repository = new GymLogRepository(getApplication());
+        repository = GymLogRepository.getRepository(getApplication());
         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
         binding.logButton.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         String currentInfo = binding.logDisplayTextView.getText().toString();
         String newDisplay = String.format(Locale.US,"Exercise:%s%nWeight:%.2f%nReps%d%n=-=-=-=%n:", mExercise,mWeight,reps)+currentInfo;
         binding.logDisplayTextView.setText(newDisplay);
+        Log.i(TAG, repository.getAllLogs().toString());
     }
+
 
     private void getInformationFromDisplay(){
         mExercise= binding.exerciseInputEditText.getText().toString();
