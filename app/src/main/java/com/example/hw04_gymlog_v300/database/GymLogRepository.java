@@ -1,10 +1,9 @@
-package com.example.hw04_gymlog_v300.Database;
+package com.example.hw04_gymlog_v300.database;
 
 import android.app.Application;
 import android.util.Log;
 
-import com.example.hw04_gymlog_v300.Database.entities.GymLog;
-import com.example.hw04_gymlog_v300.Database.entities.GymLogDAO;
+import com.example.hw04_gymlog_v300.database.entities.GymLog;
 import com.example.hw04_gymlog_v300.MainActivity;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class GymLogRepository {
     public GymLogRepository(Application application){
         GymLogDatabase db = GymLogDatabase.getDatabase(application);
         this.gymLogDAO = db.gymLogDAO();
-        this.allLogs = this.gymLogDAO.getAllRecords();
+        this.allLogs = (ArrayList<GymLog>) this.gymLogDAO.getAllRecords();
     }
 
     public ArrayList<GymLog> getAllLogs() {
@@ -27,7 +26,7 @@ public class GymLogRepository {
                 new Callable<ArrayList<GymLog>>() {
                     @Override
                     public ArrayList<GymLog> call() throws Exception {
-                        return gymLogDAO.getAllRecords();
+                        return (ArrayList<GymLog>) gymLogDAO.getAllRecords();
                     }
                 }
         );
