@@ -39,56 +39,67 @@
         android:layout_width="273dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
+        android:autofillHints=""
         android:hint="@string/enter_exercise"
         android:inputType="textAutoComplete"
         android:padding="8dp"
+        android:textColorHint="#546E7A"
         app:layout_constraintBaseline_toBaselineOf="@+id/exerciseLabelTextView"
-        app:layout_constraintStart_toEndOf="@id/exerciseLabelTextView" />
+        app:layout_constraintStart_toEndOf="@id/exerciseLabelTextView"
+        tools:ignore="VisualLintBounds" />
     <TextView
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dip"
         android:layout_marginTop="8dp"
+        android:autofillHints=""
         android:text="@string/weight"
         android:id="@+id/weightLabelTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exerciseLabelTextView"
 
         />
+
     <EditText
         android:id="@+id/weightInputEditText"
         android:layout_width="273dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
 
+        android:autofillHints=""
+        android:hint="@string/enter_a_weight"
         android:inputType="number|numberDecimal"
         android:padding="8dp"
+        android:textColorHint="#546E7A"
         app:layout_constraintBaseline_toBaselineOf="@+id/weightLabelTextView"
-        app:layout_constraintStart_toEndOf="@id/weightLabelTextView"
-        android:hint ="@string/enter_a_weight"/>
+        app:layout_constraintStart_toEndOf="@id/weightLabelTextView" />
 
     <TextView
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dip"
         android:layout_marginTop="8dp"
+        android:autofillHints=""
         android:text="@string/reps"
         android:id="@+id/repLabelTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightLabelTextView"
 
         />
+
     <EditText
         android:id="@+id/repInputEditText"
         android:layout_width="273dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
 
+        android:autofillHints=""
+        android:hint="@string/enter_reps"
         android:inputType="number"
         android:padding="8dp"
+        android:textColorHint="#546E7A"
         app:layout_constraintBaseline_toBaselineOf="@+id/repLabelTextView"
-        app:layout_constraintStart_toEndOf="@id/repLabelTextView"
-        android:hint ="@string/enter_reps"/>
+        app:layout_constraintStart_toEndOf="@id/repLabelTextView" />
 <Button
     android:layout_width="300dp"
     android:layout_height="205dp"
@@ -98,9 +109,7 @@
     android:layout_marginTop="16dp"
     android:text="@string/log"
     android:textSize="36sp"
-
-
-
+    android:id="@+id/logButton"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
