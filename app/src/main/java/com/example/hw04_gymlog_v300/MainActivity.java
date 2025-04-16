@@ -4,20 +4,15 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.hw04_gymlog_v300.database.GymLogDatabase;
 import com.example.hw04_gymlog_v300.database.GymLogRepository;
 import com.example.hw04_gymlog_v300.database.entities.GymLog;
 import com.example.hw04_gymlog_v300.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     double mWeight=0;
 
     int reps=0;
+
+    int loggedInUserId =-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +47,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
     private void insertGymLogRecord(){
         if(mExercise.isEmpty()){
             return ;
         }
 
-        GymLog log = new GymLog(mExercise, mWeight, reps);
-        repository.insertGymLog(log);
+        GymLog log = new GymLog(mExercise, mWeight, reps, loggedInUserId);
+        GymLogDatabase.databaseWriteExecutor.execute(()->{
+            repository.insertGymLog(log);
+            runOnUiThread(this::updateDisplay);
+        });
+
     }
 
     private void updateDisplay(){
