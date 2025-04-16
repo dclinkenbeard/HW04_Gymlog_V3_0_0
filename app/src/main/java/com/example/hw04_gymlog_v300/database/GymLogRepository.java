@@ -95,5 +95,5 @@ public class GymLogRepository {
             Log.i(MainActivity.TAG, "Problem when getting user by username");
         }
         return null;
-    }
+    }//commit
 }
